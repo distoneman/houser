@@ -9,7 +9,8 @@ const app = express()
 app.use(express.json())
 
 app.get('/api/houses', ctrl.getAll)
-// app.post('/api/product', pc.createItem)
+app.post('/api/houses', ctrl.createHouse)
+app.delete('/api/houses', ctrl.deleteHouse)
 
 massive(CONNECTION_STRING).then(connection => {
     app.set('db', connection)

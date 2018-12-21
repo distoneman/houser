@@ -21,28 +21,39 @@ export default class Wizard extends Component {
     handleChange = (key, val) => {
         console.log(val)
         this.setState({
-          [key]: val
+            [key]: val
         });
-      };
+    };
 
-    render(){
+    // addItem = () => {
+    addHouse(){
+        const { name, address, city, state, zip } = this.state
+        axios.post('/api/houses', { name, address, city, state, zip }).then(res => {
+            console.log(res.data)
+        })
+    }
 
-        return(
+    render() {
+
+        return (
             <div>Wizard
                 <form>
-                    <input type="text" placeholder='Property Name' 
+                    <input type="text" placeholder='Property Name'
                         onChange={(e) => this.handleChange('name', e.target.value)} value={this.state.name} />
-                    <input type="text" placeholder='Adress' 
-                        onChange={(e) =>this.handleChange('address', e.target.value)} value={this.state.address} />
+                    <input type="text" placeholder='Adress'
+                        onChange={(e) => this.handleChange('address', e.target.value)} value={this.state.address} />
                     <input type="text" placeholder='City'
-                        onChange={(e) => this.handleChange('city', e.target.value)} value={this.state.city}/>
+                        onChange={(e) => this.handleChange('city', e.target.value)} value={this.state.city} />
                     <input type="text" placeholder='State'
                         onChange={(e) => this.handleChange('state', e.target.value)} value={this.state.state} />
                     <input type="text" placeholder='zip'
                         onChange={(e) => this.handleChange('zip', e.target.value)} value={this.state.zip} />
                 </form>
-                <Link to='/wizard'>
+                <Link to='/'>
                     <button>Cancel</button>
+                </Link>
+                <Link to='/'>
+                    <button onClick={() => this.addHouse()} >Continue</button>
                 </Link>
             </div>
         )

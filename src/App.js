@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './component/header/Header.js'
-// import Wizard from './component/wizard/Wizard.js'
-// import Dashboard from './component/dashboard/Dashboard.js'
 import { Link } from 'react-router-dom'
 import routes from './routes'
 

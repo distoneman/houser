@@ -5,10 +5,18 @@ module.exports = {
             res.status(200).send(response)
         })
     },
-    createOne: (req,res) => {
+    createHouse: (req,res) => {
         const db = req.app.get('db')
         let {name, address, city, state, zip} = req.body
-        db.create_one().the(response => {
+        db.create_house({name, address, city, state, zip}).then(response => {
+            res.status(200).send(response)
+        })
+    },
+    deleteHouse: (req,res) => {
+        const db = req.app.get('db')
+        const id = req.query.id
+        console.log(id)
+        db.delete_house({id}).then(response => {
             res.status(200).send(response)
         })
     }
