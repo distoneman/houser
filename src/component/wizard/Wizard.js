@@ -1,43 +1,42 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import StepOne from './../stepOne/StepOne.js'
+import StepTwo from './../stepTwo/StepTwo.js'
+import StepThree from './../stepThree/StepThree.js'
 
 export default class Wizard extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            name: '',
-            address: '',
-            city: '',
-            state: '',
-            zip: null
-        }
-    }
-    componentDidMount() {
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         name: '',
+    //         address: '',
+    //         city: '',
+    //         state: '',
+    //         zip: null
+    //     }
+    // }
 
-    }
+    // handleChange = (key, val) => {
+    //     console.log(val)
+    //     this.setState({
+    //         [key]: val
+    //     });
+    // };
 
-    handleChange = (key, val) => {
-        console.log(val)
-        this.setState({
-            [key]: val
-        });
-    };
-
-    // addItem = () => {
-    addHouse(){
-        const { name, address, city, state, zip } = this.state
-        axios.post('/api/houses', { name, address, city, state, zip }).then(res => {
-            console.log(res.data)
-        })
-    }
+    // addHouse(){
+    //     const { name, address, city, state, zip } = this.state
+    //     axios.post('/api/houses', { name, address, city, state, zip }).then(res => {
+    //         console.log(res.data)
+    //     })
+    // }
 
     render() {
 
         return (
-            <div>Wizard
-                <form>
+            <div>
+                {/* <form>
                     <input type="text" placeholder='Property Name'
                         onChange={(e) => this.handleChange('name', e.target.value)} value={this.state.name} />
                     <input type="text" placeholder='Adress'
@@ -48,13 +47,20 @@ export default class Wizard extends Component {
                         onChange={(e) => this.handleChange('state', e.target.value)} value={this.state.state} />
                     <input type="text" placeholder='zip'
                         onChange={(e) => this.handleChange('zip', e.target.value)} value={this.state.zip} />
-                </form>
+                </form> */}
                 <Link to='/'>
                     <button>Cancel</button>
                 </Link>
-                <Link to='/'>
-                    <button onClick={() => this.addHouse()} >Continue</button>
-                </Link>
+                {/* <Link to='/'>
+                    <button onClick={() => this.addHouse()} >Complete</button>
+                </Link> */}
+
+                <Switch>
+                    <Route path='/wizard/step1' component={StepOne} />
+                    <Route path='/wizard/step2' component={StepTwo} />
+                    <Route path='/wizard/step3' component={StepThree} />
+                </Switch>
+
             </div>
         )
     }
