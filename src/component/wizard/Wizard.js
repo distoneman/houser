@@ -11,7 +11,7 @@ export default class Wizard extends Component {
             address: '',
             city: '',
             state: '',
-            zip: 0
+            zip: null
         }
     }
     componentDidMount() {

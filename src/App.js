@@ -11,11 +11,12 @@ class App extends Component {
         <span>
           <Header />
         </span>
-        <span>
+        <p>
           <Link to='/'>Dashboard View</Link>
-        </span>
+        </p>
+        <p>
           <Link to='/wizard'>Wizard View</Link>
-
+        </p>
           {routes}
       </div>
     );
