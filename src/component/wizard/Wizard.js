@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Switch, Route } from 'react-router-dom';
 import StepOne from './../stepOne/StepOne.js'
 import StepTwo from './../stepTwo/StepTwo.js'
 import StepThree from './../stepThree/StepThree.js'
+import { connect } from 'react-redux';
+import {resetState} from './../../ducks/reducer.js';
 
-export default class Wizard extends Component {
+class Wizard extends Component {
     // constructor(props) {
     //     super(props)
     //     this.state = {
@@ -35,7 +37,8 @@ export default class Wizard extends Component {
     render() {
 
         return (
-            <div>
+            <div className='wizard_title'>
+            Add New Listing
                 {/* <form>
                     <input type="text" placeholder='Property Name'
                         onChange={(e) => this.handleChange('name', e.target.value)} value={this.state.name} />
@@ -49,7 +52,7 @@ export default class Wizard extends Component {
                         onChange={(e) => this.handleChange('zip', e.target.value)} value={this.state.zip} />
                 </form> */}
                 <Link to='/'>
-                    <button>Cancel</button>
+                    <button onClick={this.props.resetState}>Cancel</button>
                 </Link>
                 {/* <Link to='/'>
                     <button onClick={() => this.addHouse()} >Complete</button>
@@ -65,3 +68,6 @@ export default class Wizard extends Component {
         )
     }
 }
+
+export default connect(null,
+    { resetState })(Wizard); 

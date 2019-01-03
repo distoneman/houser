@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #AFD4C0
+}
+
+.header{
+    background-color:#519872;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18pt;
+}
+
+.house_image {
+    width: 150px;
+    height: 115px;
+}
+
+.logo {
+    width: 34px;
+    height: 28px;
+    padding-right: 5px;
+    padding-top: 5px;
+}

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import House from './../house/House.js'
 import { Link } from 'react-router-dom'
-
-
+// import './../../style.css'
+import './dashboard.css'
 
 export default class Dashboard extends Component {
     constructor(props) {
@@ -27,6 +27,7 @@ export default class Dashboard extends Component {
     }
 
     render() {
+        // console.log(this.state.houses)
         console.log(this.state.houses)
         let houseList = this.state.houses.map(house => {
             return (
@@ -38,18 +39,26 @@ export default class Dashboard extends Component {
                     city={house.city}
                     state={house.state}
                     zip={house.zip}
+                    img={house.img}
+                    mortgage={house.mortgage}
+                    rent={house.rent}
                     deleteHouse={this.deleteHouse}
                 />
             )
         })
         return (
-            <div>
-                <div>Dashboard </div>
-                <Link to='/wizard/step1'>
-                    <button>Add New Property</button>
-                </Link>
+            <div className='dashboard_background'>
+                <div className='dashboard_container'>
+                    <div className='dashboard_header'>Dashboard</div>
+                    <Link className='link_btn' to='/wizard/step1'>
+                        <div className='add_property_btn'>Add New Property</div>
+                    </Link>
+                </div>
+                <hr />
+                <p className='listing_title'>Home Listings</p>
                 {houseList}
             </div>
+
         )
     }
 }
